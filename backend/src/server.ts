@@ -14,11 +14,17 @@ const httpServer = createServer(app);
 const allowedOrigins = config.frontendUrl.split(',').map(s => s.trim());
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error(`CORS blocked: ${origin}`));
-    }
+    // Allow requests with no origin (server-to-server, health checks, etc.)
+    if (!origin) return callback(null, true);
+    // Allow any Vercel preview/production domain
+    if (origin.endsWith('.vercel.app')) return callback(null, true);
+    // Allow explicitly configured origins
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    // Allow localhost in development
+    if (origin.includes('localhost')) return callback(null, true);
+
+    console.warn(`[CORS] Blocked origin: ${origin}`);
+    callback(null, false);
   },
   credentials: true,
 }));
