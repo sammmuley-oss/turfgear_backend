@@ -1,4 +1,4 @@
-import { Bell, Menu, User, Wifi, WifiOff, Loader2 } from 'lucide-react';
+import { Bell, Menu, User, Wifi, WifiOff } from 'lucide-react';
 import { useSidebar } from '../context/SidebarContext';
 import { useCurrentTime } from '../hooks/useCurrentTime';
 import { useSocketConnection } from '../socket/useSocket';

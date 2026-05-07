@@ -1,4 +1,4 @@
-import { Activity, Wifi, WifiOff, AlertCircle } from 'lucide-react';
+import { Wifi, WifiOff, AlertCircle } from 'lucide-react';
 
 const turfCards = [
   { name: 'Turf Alpha', status: 'online' as const, machines: 4, city: 'Mumbai' },

@@ -1,5 +1,4 @@
 import { createContext, useContext, useState, useCallback, useRef, type ReactNode } from 'react';
-import { NotificationType } from '../types';
 import type { NotificationAlert } from '../types';
 
 interface NotificationContextValue {

@@ -1,4 +1,4 @@
-import { DollarSign, Calendar, TrendingUp } from 'lucide-react';
+import { Calendar, TrendingUp } from 'lucide-react';
 
 const summaryCards = [
   { label: 'Total Revenue', value: '—', sub: 'All time' },

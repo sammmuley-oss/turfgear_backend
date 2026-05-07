@@ -6,7 +6,7 @@ import type { SocketMachineUpdate } from '../types';
  * Currently simulates updates. Replace with real socket when backend is ready.
  */
 export function useRealtimeStatus() {
-  const [updates, setUpdates] = useState<SocketMachineUpdate[]>([]);
+  const [updates, _setUpdates] = useState<SocketMachineUpdate[]>([]);
   const [isConnected, setIsConnected] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 

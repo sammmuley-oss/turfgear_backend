@@ -1,4 +1,4 @@
-import { Settings as SettingsIcon, User, Shield, Bell, Palette, Database } from 'lucide-react';
+import { User, Shield, Bell, Palette, Database } from 'lucide-react';
 
 const sections = [
   { label: 'Profile', desc: 'Manage your admin account details', icon: User },

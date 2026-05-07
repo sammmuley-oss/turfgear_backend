@@ -13,7 +13,7 @@ import { PageLoader, ErrorState } from '../components/ui/LoadingStates';
 import { useMachineUpdates, useActivityStream, useAlertStream } from '../socket/useSocket';
 import { useNotifications } from '../context/NotificationContext';
 import { NotificationType } from '../types';
-import type { MachineUpdatePayload, ActivityPayload } from '../socket/socketEvents';
+import type { MachineUpdatePayload } from '../socket/socketEvents';
 import type { Machine, ActivityEvent } from '../types';
 
 export default function DashboardPage() {

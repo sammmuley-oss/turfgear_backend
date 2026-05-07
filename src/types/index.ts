@@ -1,58 +1,66 @@
-// ─── Enums ───
-export enum MachineStatus {
-  ONLINE = 'ONLINE',
-  OFFLINE = 'OFFLINE',
-  MAINTENANCE = 'MAINTENANCE',
-}
+// ─── Enums (as const objects for erasableSyntaxOnly compatibility) ───
+export const MachineStatus = {
+  ONLINE: 'ONLINE',
+  OFFLINE: 'OFFLINE',
+  MAINTENANCE: 'MAINTENANCE',
+} as const;
+export type MachineStatus = (typeof MachineStatus)[keyof typeof MachineStatus];
 
-export enum LockerStatus {
-  AVAILABLE = 'available',
-  RENTED = 'rented',
-  OFFLINE = 'offline',
-  DAMAGED = 'damaged',
-  LOW_STOCK = 'low_stock',
-}
+export const LockerStatus = {
+  AVAILABLE: 'available',
+  RENTED: 'rented',
+  OFFLINE: 'offline',
+  DAMAGED: 'damaged',
+  LOW_STOCK: 'low_stock',
+} as const;
+export type LockerStatus = (typeof LockerStatus)[keyof typeof LockerStatus];
 
-export enum RfidStatus {
-  ACTIVE = 'active',
-  INACTIVE = 'inactive',
-  ERROR = 'error',
-}
+export const RfidStatus = {
+  ACTIVE: 'active',
+  INACTIVE: 'inactive',
+  ERROR: 'error',
+} as const;
+export type RfidStatus = (typeof RfidStatus)[keyof typeof RfidStatus];
 
-export enum DiagnosticStatus {
-  HEALTHY = 'healthy',
-  WARNING = 'warning',
-  CRITICAL = 'critical',
-}
+export const DiagnosticStatus = {
+  HEALTHY: 'healthy',
+  WARNING: 'warning',
+  CRITICAL: 'critical',
+} as const;
+export type DiagnosticStatus = (typeof DiagnosticStatus)[keyof typeof DiagnosticStatus];
 
-export enum EventSeverity {
-  INFO = 'info',
-  SUCCESS = 'success',
-  WARNING = 'warning',
-  ERROR = 'error',
-}
+export const EventSeverity = {
+  INFO: 'info',
+  SUCCESS: 'success',
+  WARNING: 'warning',
+  ERROR: 'error',
+} as const;
+export type EventSeverity = (typeof EventSeverity)[keyof typeof EventSeverity];
 
-export enum NotificationType {
-  SUCCESS = 'success',
-  WARNING = 'warning',
-  ERROR = 'error',
-  INFO = 'info',
-  MACHINE_OFFLINE = 'machine_offline',
-  LOW_STOCK = 'low_stock',
-  PAYMENT = 'payment',
-}
+export const NotificationType = {
+  SUCCESS: 'success',
+  WARNING: 'warning',
+  ERROR: 'error',
+  INFO: 'info',
+  MACHINE_OFFLINE: 'machine_offline',
+  LOW_STOCK: 'low_stock',
+  PAYMENT: 'payment',
+} as const;
+export type NotificationType = (typeof NotificationType)[keyof typeof NotificationType];
 
-export enum BookingStatus {
-  ACTIVE = 'active',
-  UPCOMING = 'upcoming',
-  COMPLETED = 'completed',
-}
+export const BookingStatus = {
+  ACTIVE: 'active',
+  UPCOMING: 'upcoming',
+  COMPLETED: 'completed',
+} as const;
+export type BookingStatus = (typeof BookingStatus)[keyof typeof BookingStatus];
 
-export enum UserRole {
-  SUPER_ADMIN = 'super_admin',
-  ADMIN = 'admin',
-  OPERATOR = 'operator',
-}
+export const UserRole = {
+  SUPER_ADMIN: 'super_admin',
+  ADMIN: 'admin',
+  OPERATOR: 'operator',
+} as const;
+export type UserRole = (typeof UserRole)[keyof typeof UserRole];
 
 // ─── Admin User ───
 export interface AdminUser {

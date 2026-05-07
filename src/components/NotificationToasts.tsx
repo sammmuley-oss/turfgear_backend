@@ -30,7 +30,7 @@ export function NotificationToasts() {
       maxHeight: 'calc(100vh - 90px)',
       pointerEvents: 'none',
     }}>
-      {notifications.map((n, idx) => {
+      {notifications.map((n) => {
         const cfg = typeConfig[n.type] || typeConfig[NotificationType.INFO];
         const Icon = cfg.icon;
 
