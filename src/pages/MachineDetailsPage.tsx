@@ -115,7 +115,7 @@ export default function MachineDetailsPage() {
         <div className="lg:col-span-2"><OccupancyPanel data={liveMachine.turfOccupancy} /></div>
       </div>
 
-      <MachineActionPanel />
+      <MachineActionPanel machineId={machineId} />
     </div>
   );
 }
