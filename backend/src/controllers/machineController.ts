@@ -14,6 +14,11 @@ function apiError(message: string, status: number = 404) {
   return { success: false, data: null, message, timestamp: new Date().toISOString() };
 }
 
+function getMachineId(req: Request): string {
+  const id = req.params.machineId;
+  return Array.isArray(id) ? id[0] : id;
+}
+
 export const machineController = {
   /** GET /api/machines */
   getAll(req: Request, res: Response): void {
@@ -29,9 +34,10 @@ export const machineController = {
 
   /** GET /api/machines/:machineId */
   getById(req: Request, res: Response): void {
-    const machine = machineService.getById(req.params.machineId);
+    const machineId = getMachineId(req);
+    const machine = machineService.getById(machineId);
     if (!machine) {
-      res.status(404).json(apiError(`Machine ${req.params.machineId} not found`));
+      res.status(404).json(apiError(`Machine ${machineId} not found`));
       return;
     }
     res.json(apiResponse(machine));
@@ -39,9 +45,10 @@ export const machineController = {
 
   /** GET /api/machines/:machineId/analytics */
   getAnalytics(req: Request, res: Response): void {
-    const analytics = machineService.getAnalytics(req.params.machineId);
+    const machineId = getMachineId(req);
+    const analytics = machineService.getAnalytics(machineId);
     if (!analytics) {
-      res.status(404).json(apiError(`Machine ${req.params.machineId} not found`));
+      res.status(404).json(apiError(`Machine ${machineId} not found`));
       return;
     }
     res.json(apiResponse(analytics));
@@ -49,21 +56,23 @@ export const machineController = {
 
   /** GET /api/machines/:machineId/diagnostics */
   getDiagnostics(req: Request, res: Response): void {
-    const machine = machineService.getById(req.params.machineId);
+    const machineId = getMachineId(req);
+    const machine = machineService.getById(machineId);
     if (!machine) {
-      res.status(404).json(apiError(`Machine ${req.params.machineId} not found`));
+      res.status(404).json(apiError(`Machine ${machineId} not found`));
       return;
     }
-    res.json(apiResponse(machineService.getDiagnostics(req.params.machineId)));
+    res.json(apiResponse(machineService.getDiagnostics(machineId)));
   },
 
   /** GET /api/machines/:machineId/events */
   getEvents(req: Request, res: Response): void {
-    const machine = machineService.getById(req.params.machineId);
+    const machineId = getMachineId(req);
+    const machine = machineService.getById(machineId);
     if (!machine) {
-      res.status(404).json(apiError(`Machine ${req.params.machineId} not found`));
+      res.status(404).json(apiError(`Machine ${machineId} not found`));
       return;
     }
-    res.json(apiResponse(machineService.getEvents(req.params.machineId)));
+    res.json(apiResponse(machineService.getEvents(machineId)));
   },
 };

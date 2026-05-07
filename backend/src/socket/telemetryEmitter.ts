@@ -4,6 +4,7 @@ import type {
   MachineUpdatePayload, LockerUpdatePayload, DiagnosticsUpdatePayload,
   RevenueUpdatePayload, AlertPayload, ActivityPayload, TurfUpdatePayload,
 } from './events.js';
+import { DiagnosticStatus } from '../models/index.js';
 import { machines } from '../mock/machines.js';
 
 /**
@@ -123,7 +124,7 @@ export class TelemetryEmitter {
       const fluctuation = Math.floor(Math.random() * 6 - 3);
       const newValue = Math.max(0, Math.min(100, d.value + fluctuation));
       d.value = newValue;
-      d.status = newValue >= 80 ? 'healthy' : newValue >= 50 ? 'warning' : 'critical';
+      d.status = (newValue >= 80 ? 'healthy' : newValue >= 50 ? 'warning' : 'critical') as DiagnosticStatus;
       return { id: d.id, value: d.value, status: d.status };
     });
 
